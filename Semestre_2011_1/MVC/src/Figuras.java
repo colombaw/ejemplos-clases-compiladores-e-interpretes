@@ -18,6 +18,7 @@ public class Figuras {
 	
 	public static void main(String[] args) {
 		try{
+			System.out.print("hola");
 			final JFrame frame = new JFrame();
 			frame.setTitle("Ejemplo Modelo Vista Controlador (MVC) Compíladores e Interpretes UNET");
 			//Set the window initial Size & default close operation
