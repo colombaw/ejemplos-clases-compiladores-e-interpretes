@@ -23,8 +23,10 @@ public class Circulo extends Figura {
 	}
 	
 	@Override
+	
+	/*revisar dentro de la figura */
 	public boolean dentroFigura(Point p) {
-		if ( radio >= Math.sqrt( Math.pow( p.x - posicion.x, 2 ) + Math.pow(p.y - posicion.y, 2 )))		
+		if ( radio >= Math.sqrt( Math.pow( p.x - posicion.x,2 ) + Math.pow(p.y - posicion.y, 2 )))		
 				return true;
 		else
 				return false;

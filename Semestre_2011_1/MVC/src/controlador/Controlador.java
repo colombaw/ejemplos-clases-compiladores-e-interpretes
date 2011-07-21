@@ -1,6 +1,9 @@
 package controlador;
 
 import java.awt.Point;
+
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import java.awt.event.MouseEvent;
 import java.util.ListIterator;
@@ -10,6 +13,7 @@ import modelo.Circulo;
 import modelo.Compilador;
 import modelo.Cuadrado;
 import modelo.Figura;
+import modelo.Maquina;
 import modelo.Modelo;
 import modelo.Programa;
 
@@ -19,6 +23,8 @@ public class Controlador {
 	private Vista vista;
 	private Figura seleccionada;
 	private int tipo;
+	
+	
 	
 	public Controlador(Modelo modelo, Vista vista){
 		this.modelo=modelo;
@@ -73,10 +79,13 @@ public class Controlador {
 		if(SwingUtilities.isLeftMouseButton(ev)){ 			//Click boton izquierdo selecciona figura
 			seleccionada=this.getFiguraEn(ev.getPoint());
 		}else if(tipo == 1 && SwingUtilities.isRightMouseButton(ev)){
-			this.anyadirFigura(new Compilador(ev.getPoint(),25));
+			this.anyadirFigura(new Compilador(ev.getPoint(),50));
 		}
 		else if(tipo == 2 && SwingUtilities.isRightMouseButton(ev)){
-			this.anyadirFigura(new Programa(ev.getPoint(),25));
+			this.anyadirFigura(new Programa(ev.getPoint(),50));
+		}
+		else if(tipo == 3 && SwingUtilities.isRightMouseButton(ev)){
+			this.anyadirFigura(new Maquina(ev.getPoint(),50));
 		}
 		vista.repaint();		
 	}
@@ -92,6 +101,12 @@ public class Controlador {
 	public void eVmouseReleased (MouseEvent ev) {
 		vista.repaint();
 		if(seleccionada!=null){
+			
+			
+			final JFrame frame = new JFrame();
+			frame.setTitle("TIPO ");
+			frame.setVisible(true);
+			frame.setBounds(seleccionada.getX(),seleccionada.getY(),200,200);
 			seleccionada.setSeleccionada(false);
 			seleccionada=null;
 		}

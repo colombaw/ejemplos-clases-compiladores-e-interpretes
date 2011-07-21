@@ -25,7 +25,7 @@ public class Figuras {
 	public static void main(String[] args) {
 		try{
 			final JFrame frame = new JFrame();
-			frame.setTitle("Diagramas de Tombstone (UNET)");
+			frame.setTitle("Diagramas de Tombstone VGC ");
 			//Set the window initial Size & default close operation
 			frame.setVisible(true);
 			Dimension fullscreen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -46,7 +46,7 @@ public class Figuras {
 			frame.repaint();*/
 			/*modificacion para que sea un panel estatico*/
 			JPanel areadibujo = new JPanel();
-			areadibujo.setBounds(150,0,750,500);
+			areadibujo.setBounds(150,0,900,750);
 			areadibujo.add(controlador.getVista());
 			
 			/*panel lateral izquierdo sub menu*/
@@ -73,7 +73,7 @@ public class Figuras {
 				public void mouseReleased(MouseEvent arg0) {
 					// TODO Auto-generated method stub
 					/**/
-					System.out.print("tipo 1");
+					System.out.println("tipo 1");
 					/*Crear un compilador*/
 					controlador.setseleccion(1);
 				}
@@ -102,16 +102,16 @@ public class Figuras {
 					
 				}
 			});
-			JButton butmaqui = new JButton("Programas");
-			butmaqui.setBounds(30,70, 100, 30);
-			areabotones.add(butmaqui);
-			butmaqui.addMouseListener(new MouseListener() {
+			JButton butpro = new JButton("Programas");
+			butpro.setBounds(30,70, 100, 30);
+			areabotones.add(butpro);
+			butpro.addMouseListener(new MouseListener() {
 				
 				@Override
 				public void mouseReleased(MouseEvent arg0) {
 					// TODO Auto-generated method stub
 					/**/
-					System.out.print("tipo 2");
+					System.out.println("tipo 2");
 					/*Crear un compilador*/
 					controlador.setseleccion(2);
 				}
@@ -140,8 +140,44 @@ public class Figuras {
 					
 				}
 			});
-			
-			
+			JButton butmaqui = new JButton("Maquina");
+			butmaqui.setBounds(30,110, 100, 30);
+			areabotones.add(butmaqui);
+			butmaqui.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					/**/
+					System.out.println("tipo 3");
+					/*Crear un compilador*/
+					controlador.setseleccion(3);
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
 			
 			
 			guiobjects.add(areadibujo);
