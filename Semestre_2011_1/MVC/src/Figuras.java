@@ -1,9 +1,15 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
@@ -18,27 +24,129 @@ public class Figuras {
 	
 	public static void main(String[] args) {
 		try{
-			System.out.print("hola");
 			final JFrame frame = new JFrame();
-			frame.setTitle("Ejemplo Modelo Vista Controlador (MVC) Compíladores e Interpretes UNET");
+			frame.setTitle("Diagramas de Tombstone (UNET)");
 			//Set the window initial Size & default close operation
 			frame.setVisible(true);
 			Dimension fullscreen = Toolkit.getDefaultToolkit().getScreenSize();
-			fullscreen.width=fullscreen.width-400;
-			fullscreen.height=fullscreen.height-400;
+			fullscreen.width=fullscreen.width-100;
+			fullscreen.height=fullscreen.height-250;
 			frame.setBounds(50,50,fullscreen.width,fullscreen.height);
 			frame.getContentPane().setPreferredSize(fullscreen);
 			frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 		    Container guiobjects = frame.getContentPane();
 		    guiobjects.setLayout(new BorderLayout());
 			Modelo modelo = new Modelo();
-			Vista vista = new Vista(new Dimension(1000,800),modelo);
+			Vista vista = new Vista(new Dimension(1024,768),modelo);
 			final Controlador controlador = new Controlador(modelo,vista);
 			vista.controlador=controlador; //Lo registro para su uso, deberia ser un metodo pero por simplificacion
-			JScrollPane ModelScroll = new JScrollPane(controlador.getVista(), ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-			guiobjects.add(ModelScroll);
+			//JScrollPane ModelScroll = new JScrollPane(controlador.getVista(), ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+			//guiobjects.add(ModelScroll);				
 			/*ModelScroll.repaint();
 			frame.repaint();*/
+			/*modificacion para que sea un panel estatico*/
+			JPanel areadibujo = new JPanel();
+			areadibujo.setBounds(150,0,750,500);
+			areadibujo.add(controlador.getVista());
+			
+			/*panel lateral izquierdo sub menu*/
+			JPanel areabotones = new JPanel();
+			areabotones.setBounds(0,0,0,0);
+			areabotones.setLayout(null);
+			//areabotones.setLayout(null);
+			areabotones.setBackground(Color.gray);
+			/* Etiqueta */
+			JLabel agre = new JLabel("Agregar:");
+			agre.setBounds(10,0,50,30);
+			areabotones.add(agre);
+			/*  botones */
+			JButton butcompi = new JButton("Compilador");
+			butcompi.setBounds(30,30, 100, 30);
+			areabotones.add(butcompi);
+			//areabotones.add(); botones
+			//frame.add(areadibujo);
+			//frame.add(areabotones);
+			/* Boton para crear una figura de tipo compilador*/
+			butcompi.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					/**/
+					System.out.print("tipo 1");
+					/*Crear un compilador*/
+					controlador.setseleccion(1);
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+			JButton butmaqui = new JButton("Programas");
+			butmaqui.setBounds(30,70, 100, 30);
+			areabotones.add(butmaqui);
+			butmaqui.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					/**/
+					System.out.print("tipo 2");
+					/*Crear un compilador*/
+					controlador.setseleccion(2);
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+			
+			
+			
+			
+			guiobjects.add(areadibujo);
+			guiobjects.add(areabotones);
+			/*-----------------------------------------------------*/
 			frame.pack();
 		}catch (RuntimeException e){
 			exitApplication();

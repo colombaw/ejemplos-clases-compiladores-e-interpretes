@@ -7,20 +7,27 @@ import java.util.ListIterator;
 
 import vista.Vista;
 import modelo.Circulo;
+import modelo.Compilador;
 import modelo.Cuadrado;
 import modelo.Figura;
 import modelo.Modelo;
+import modelo.Programa;
 
 public class Controlador {
 	
 	private Modelo modelo;
 	private Vista vista;
 	private Figura seleccionada;
+	private int tipo;
 	
 	public Controlador(Modelo modelo, Vista vista){
 		this.modelo=modelo;
 		this.vista=vista;
 		seleccionada=null;
+	}
+	
+	public void setseleccion(int tipo){	
+		this.tipo=tipo;
 	}
 	
 	public Figura obtenerFigura(Point posicion){
@@ -52,13 +59,24 @@ public class Controlador {
 	}
 	
 	public void eVmousePressed(MouseEvent ev) {
+		/*tipo de elemento a añadir*/
+		/*
 		if(SwingUtilities.isLeftMouseButton(ev)){ 			//Click boton izquierdo selecciona figura
 			seleccionada=this.getFiguraEn(ev.getPoint());
 		}else if(SwingUtilities.isRightMouseButton(ev)){		//click boton izquierdo añade figura tipo cuadrado
-			this.anyadirFigura(new Cuadrado(ev.getPoint(),40));			
+			this.anyadirFigura(new Cuadrado(ev.getPoint(),25));			
 		}else if(SwingUtilities.isMiddleMouseButton(ev))//click boton medio añade figura tipo circulo
 		{
-			this.anyadirFigura(new Circulo(ev.getPoint(),40));
+			this.anyadirFigura(new Circulo(ev.getPoint(),25));// lo grande de la figura
+		}*/
+		/* Por tipo de figura */
+		if(SwingUtilities.isLeftMouseButton(ev)){ 			//Click boton izquierdo selecciona figura
+			seleccionada=this.getFiguraEn(ev.getPoint());
+		}else if(tipo == 1 && SwingUtilities.isRightMouseButton(ev)){
+			this.anyadirFigura(new Compilador(ev.getPoint(),25));
+		}
+		else if(tipo == 2 && SwingUtilities.isRightMouseButton(ev)){
+			this.anyadirFigura(new Programa(ev.getPoint(),25));
 		}
 		vista.repaint();		
 	}

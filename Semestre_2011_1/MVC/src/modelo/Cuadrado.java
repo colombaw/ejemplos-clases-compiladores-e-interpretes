@@ -26,6 +26,7 @@ public class Cuadrado extends Figura {
 		int difX=Math.abs(p.x-(posicion.x+(ancho/2)));
 		int difY=Math.abs(p.y-(posicion.y+(ancho/2)));
 		return ( (difX<ancho/2) && (difY<ancho/2));   
+		
 	}
 	
 	@Override
