@@ -1,5 +1,5 @@
 package controlador;
-/*mejorar*/
+/*base y acciones */
 import java.awt.Color;
 import java.awt.Point;
 
@@ -89,6 +89,7 @@ public class Controlador {
 	    				//elemento.seleccionada=true;
 	    				//elemento.dentroFigura(p)
 	    				//System.out.println("--"+elemento.getNombre1());nombre de la seleccionada
+	    				//acciones internas 
 	    				System.out.println("serca");
 	    				return tmp;				
 	    			}
