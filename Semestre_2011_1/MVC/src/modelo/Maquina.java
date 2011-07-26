@@ -8,11 +8,14 @@ import java.awt.Point;
 public class Maquina extends Figura {
 
 	private int ancho;
+	private String plataforma;
 	
 	public Maquina(Point posicion, int ancho){
 		this.posicion=posicion;
 		this.ancho=ancho;
-		this.seleccionada=false;  
+		this.seleccionada=false; 
+		this.tipofigura=3;
+		this.plataforma = "Plat";
 	}
 	
 	public void setAncho(int ancho){
@@ -21,6 +24,14 @@ public class Maquina extends Figura {
 	public int getAncho(){
 		return ancho;
 	}
+	
+	public void setPlataforma(String pro){
+		this.plataforma=pro;
+	}
+	public String getPlataforma(){
+		return plataforma;
+	}
+	
 	
 	
 	
@@ -43,29 +54,93 @@ public class Maquina extends Figura {
 			if(i==0){
 				gpieza[i]=g;
 				
-				gpieza[i].setColor(Color.BLACK);
+				gpieza[i].setColor(Color.BLUE);
 				gpieza[i].fillRect(this.getX(), this.getY(), this.getAncho(), this.getAncho());
-				gpieza[i].setColor(Color.GREEN);
+				gpieza[i].setColor(Color.WHITE);
+				gpieza[i].drawString(getNombre1(),this.getX()+5,(this.getY()+this.getAncho()/2)+5);
 				/// pasar el texto de las las pantallas 
-				gpieza[i].drawString("h1",this.getX()+20,this.getY()+25);
+				// dependiendo de el tamaño acomodar las letras
+				//
+				
 			}
-			if(i==1){
-				
+			if(i==1){				
 				//colocar icono en la parte de abajo :)
-				
 				gpieza[i]=g;
 				//g2d.draw(this.getX(), this.getY(), this.getAncho(), this.getAncho() );
-				
-				gpieza[i].setColor(Color.gray);
-				gpieza[i].fillRect(this.getX(), this.getY()+50, this.getAncho(), this.getAncho());
-				gpieza[i].setColor(Color.GREEN);
-				/// pasar el texto de las las pantallas 
-				gpieza[i].drawString("h2",this.getX()+20,this.getY()+75);
+				//gpieza[i].setColor(Color.gray);
+				//gpieza[i].fillRect(this.getX(), this.getY()+this.getAncho(), this.getAncho(), this.getAncho());
+				//gpieza[i].setColor(Color.GREEN);
+			
 			}
+		}
+		
+		if(this.seleccionada){
+			for(int i=0;i<2;i++){
+				if(i==0){
+					gpieza[i]=g;
+					
+					gpieza[i].setColor(Color.gray);
+					gpieza[i].fillRect(this.getX(), this.getY(), this.getAncho(), this.getAncho());
+					//gpieza[i].setColor(Color.WHITE);
+					//gpieza[i].drawString(getNombre1(),this.getX()+5,(this.getY()+this.getAncho()/2)+5);
+					/// pasar el texto de las las pantallas 
+					// dependiendo de el tamaño acomodar las letras
+					//
+					
+				}
+				if(i==1){				
+					//colocar icono en la parte de abajo :)
+					gpieza[i]=g;
+					
+					//gpieza[i].setColor(Color.gray);
+					//gpieza[i].fillRect(this.getX(), this.getY(), this.getAncho(), this.getAncho());
+					//gpieza[i].setColor(Color.GREEN);
+				
+				}
+			}
+			
 		}
 		
 		
 		
 	}
+
+	@Override
+	public String getNombre1() {
+		// TODO Auto-generated method stub
+		return plataforma;
+	}
+
+	@Override
+	public void setNombre1(String name) {
+		// TODO Auto-generated method stub
+		this.plataforma = name;
+	}
+
+	@Override
+	public String getNombre2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setNombre2(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getNombre3() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setNombre3(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }

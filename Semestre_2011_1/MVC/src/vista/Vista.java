@@ -29,9 +29,14 @@ public class Vista extends JPanel {
 		setBackground(Color.white);
 		setFocusable(true);
 
+		
+		
 		//Mejorable al 1000% solo por simplificacion realizado de esta forma
 		MouseController mouseControl = new MouseController() {
-			public void mouseClicked(MouseEvent event) {}
+			
+			public void eVmouseClicked(MouseEvent event) {
+				eVmouseClicked(event);
+			}
 			public void mouseEntered(MouseEvent event) {}
 			public void mouseExited(MouseEvent event) {}
 			public void mouseMoved(MouseEvent event) {}
@@ -55,6 +60,7 @@ public class Vista extends JPanel {
 	private void pintarTodo(Graphics2D g){
 		for (Figura elemento : modelo.getListado()) {
 			elemento.dibujar(g);
+			
 		}
 	}
 
@@ -78,6 +84,14 @@ public class Vista extends JPanel {
 			controlador.eVmouseReleased(ev);
 		}
 	}
+	
+	public void eVmouseClicked(MouseEvent ev) {
+		if(controlador!=null)
+		{
+			controlador.eVmouseClicked(ev);
+		}
+	}
+	
 	
 }
 

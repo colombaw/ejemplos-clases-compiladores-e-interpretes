@@ -42,4 +42,41 @@ public class Circulo extends Figura {
 		}
 	}
 
+
+	@Override
+	public String getNombre1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setNombre1(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getNombre2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setNombre2(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getNombre3() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setNombre3(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

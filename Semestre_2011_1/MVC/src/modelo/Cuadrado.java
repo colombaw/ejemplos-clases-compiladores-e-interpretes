@@ -38,5 +38,43 @@ public class Cuadrado extends Figura {
 			g.setColor(Color.RED);
 			g.drawRect(this.getX()+7, this.getY()+7, this.getAncho()-20, this.getAncho()-20);
 		}
+	}
+
+
+
+	@Override
+	public String getNombre1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setNombre1(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getNombre2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setNombre2(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getNombre3() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setNombre3(String name) {
+		// TODO Auto-generated method stub
+		
 	}	
 }

@@ -54,26 +54,28 @@ public class Figuras {
 			areabotones.setBounds(0,0,0,0);
 			areabotones.setLayout(null);
 			//areabotones.setLayout(null);
-			areabotones.setBackground(Color.gray);
-			/* Etiqueta */
+			areabotones.setBackground(Color.LIGHT_GRAY);
+			// Etiqueta 
 			JLabel agre = new JLabel("Agregar:");
 			agre.setBounds(10,0,50,30);
 			areabotones.add(agre);
-			/*  botones */
+			
+			// botones 
 			JButton butcompi = new JButton("Compilador");
 			butcompi.setBounds(30,30, 100, 30);
 			areabotones.add(butcompi);
 			//areabotones.add(); botones
 			//frame.add(areadibujo);
 			//frame.add(areabotones);
-			/* Boton para crear una figura de tipo compilador*/
+			// Boton para crear una figura de tipo compilador
+			
 			butcompi.addMouseListener(new MouseListener() {
 				
 				@Override
 				public void mouseReleased(MouseEvent arg0) {
 					// TODO Auto-generated method stub
 					/**/
-					System.out.println("tipo 1");
+					//System.out.println("tipo 1");
 					/*Crear un compilador*/
 					controlador.setseleccion(1);
 				}
@@ -102,6 +104,7 @@ public class Figuras {
 					
 				}
 			});
+			
 			JButton butpro = new JButton("Programas");
 			butpro.setBounds(30,70, 100, 30);
 			areabotones.add(butpro);
@@ -111,7 +114,7 @@ public class Figuras {
 				public void mouseReleased(MouseEvent arg0) {
 					// TODO Auto-generated method stub
 					/**/
-					System.out.println("tipo 2");
+					//System.out.println("tipo 2");
 					/*Crear un compilador*/
 					controlador.setseleccion(2);
 				}
@@ -140,6 +143,7 @@ public class Figuras {
 					
 				}
 			});
+			
 			JButton butmaqui = new JButton("Maquina");
 			butmaqui.setBounds(30,110, 100, 30);
 			areabotones.add(butmaqui);
@@ -149,7 +153,7 @@ public class Figuras {
 				public void mouseReleased(MouseEvent arg0) {
 					// TODO Auto-generated method stub
 					/**/
-					System.out.println("tipo 3");
+					//System.out.println("tipo 3");
 					/*Crear un compilador*/
 					controlador.setseleccion(3);
 				}
@@ -179,6 +183,45 @@ public class Figuras {
 				}
 			});
 			
+			JButton butinter = new JButton("Interprete");
+			butinter.setBounds(30,150, 100, 30);
+			areabotones.add(butinter);
+			
+			butinter.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					/**/
+					//System.out.println("tipo 3");
+					/*Crear un compilador*/
+					controlador.setseleccion(4);
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
 			
 			guiobjects.add(areadibujo);
 			guiobjects.add(areabotones);
