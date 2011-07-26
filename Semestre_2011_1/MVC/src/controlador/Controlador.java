@@ -1,5 +1,5 @@
 package controlador;
-/*Victor Salcedo*/
+/*mejorar*/
 import java.awt.Color;
 import java.awt.Point;
 
