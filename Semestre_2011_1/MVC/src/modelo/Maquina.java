@@ -50,6 +50,7 @@ public class Maquina extends Figura {
 		Graphics gpieza[] = null;
 		gpieza = new Graphics[2];
 		
+		
 		for(int i=0;i<2;i++){
 			if(i==0){
 				gpieza[i]=g;
@@ -65,11 +66,13 @@ public class Maquina extends Figura {
 			}
 			if(i==1){				
 				//colocar icono en la parte de abajo :)
+				int coordX[ ] = { this.getX(),this.getX()+40,this.getX()+20};
+				int coordY[ ] = { this.getY()+40,this.getY()+40,this.getY()+60};
 				gpieza[i]=g;
+				gpieza[i].setColor(Color.blue);
+				gpieza[i].fillPolygon(coordX, coordY, 3); 
 				//g2d.draw(this.getX(), this.getY(), this.getAncho(), this.getAncho() );
-				//gpieza[i].setColor(Color.gray);
-				//gpieza[i].fillRect(this.getX(), this.getY()+this.getAncho(), this.getAncho(), this.getAncho());
-				//gpieza[i].setColor(Color.GREEN);
+				
 			
 			}
 		}
@@ -81,8 +84,7 @@ public class Maquina extends Figura {
 					
 					gpieza[i].setColor(Color.gray);
 					gpieza[i].fillRect(this.getX(), this.getY(), this.getAncho(), this.getAncho());
-					//gpieza[i].setColor(Color.WHITE);
-					//gpieza[i].drawString(getNombre1(),this.getX()+5,(this.getY()+this.getAncho()/2)+5);
+					
 					/// pasar el texto de las las pantallas 
 					// dependiendo de el tamaño acomodar las letras
 					//
@@ -91,10 +93,13 @@ public class Maquina extends Figura {
 				if(i==1){				
 					//colocar icono en la parte de abajo :)
 					gpieza[i]=g;
+					int coordX[ ] = { this.getX(),this.getX()+40,this.getX()+20};
+					int coordY[ ] = { this.getY()+40,this.getY()+40,this.getY()+60};
+					gpieza[i]=g;
+					gpieza[i].setColor(Color.gray);
+					gpieza[i].fillPolygon(coordX, coordY, 3); 
 					
-					//gpieza[i].setColor(Color.gray);
-					//gpieza[i].fillRect(this.getX(), this.getY(), this.getAncho(), this.getAncho());
-					//gpieza[i].setColor(Color.GREEN);
+					
 				
 				}
 			}

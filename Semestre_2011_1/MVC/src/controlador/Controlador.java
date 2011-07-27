@@ -206,7 +206,7 @@ public class Controlador {
 	    					if((tmp.getX()+40 <= p.getX() && p.getX() <= tmp.getX()+80) && (tmp.getY() <= p.getY() && p.getY() <= tmp.getY()+40)){
 	    						System.out.println("Unir compilador con Programa");
 	    						
-	    						if(tmp.getNombre2().compareTo(seleccionada.getNombre1())==0){
+	    						if(tmp.getNombre2().compareTo(seleccionada.getNombre1())==0 ){
 	    							System.out.print("Si ");
 	    							ventana.setVisible(true);
 	    							
@@ -290,7 +290,7 @@ public class Controlador {
 	    					}
 	    					
 	    					
-	    					
+	    					return tmp;
 	    					
 	    					
 	    				}else if(tmp.GetTipofigura()==3){
