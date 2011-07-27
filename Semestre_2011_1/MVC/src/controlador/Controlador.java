@@ -1,5 +1,8 @@
 package controlador;
+/*mejoras*/
+
 /*base y acciones */
+
 import java.awt.Color;
 import java.awt.Point;
 
@@ -72,27 +75,557 @@ public class Controlador {
 	    return null;
 	}
 
-	public Figura compararFigura(Point p, int tipo){
+	public Figura compararFigura(final Point p, int tipo, final Figura actual){
 		int i=0;
+		
+		final JFrame ventana = new JFrame();
+		ventana.setTitle(" Unir Figuras ");
+		ventana.setBounds(seleccionada.getX(),seleccionada.getY(),220,120);
+		ventana.setLayout(null);
+		ventana.setResizable(false);
+		ventana.getContentPane().setBackground(Color.WHITE);
+		
+		JLabel pregunta= new JLabel("¿Desea unir las dos figuras?");
+		pregunta.setBounds(30,0,200,30);
+		ventana.add(pregunta);
+		
+		JButton butsi = new JButton("Si");
+		butsi.setBounds(50,40, 50, 30);
+		ventana.add(butsi);
+		JButton butno = new JButton("No");
+		butno.setBounds(110,40, 50, 30);
+		ventana.add(butno);
+		
+		
 		System.out.println("actual"+p.getX());
 		ListIterator<Figura> it=modelo.getListado().listIterator();
-		int difX=Math.abs(p.x-(p.x+(40/2)));
-		int difY=Math.abs(p.y-(p.y+(40/2)));
+		
 	    while (it.hasNext()) {
 	    	i++;
-	    	Figura tmp=it.next();
+	    	final Figura tmp=it.next();
 	    	System.out.println("lista-->"+tmp.getNombre1()+".."+i);
 	    	System.out.println("posilist->"+tmp.getX());
 	    	System.out.println("tipo->"+tmp.GetTipofigura());
 	    		if(tmp.getSeleccionada()==false){
-	    			if(p.getX() < tmp.getX()-10 || p.getY() < tmp.getY()+10){
+	    			
+	    			if(tipo==1){
+	    				
+	    				System.out.print("Compilador Vs ");
+	    				
+	    				if(tmp.GetTipofigura()==1){
+	    					System.out.println("Compilador");
+	    					if((tmp.getX()+80 <= p.getX() &&  p.getX() <= tmp.getX()+120) && (tmp.getY()+40 <= p.getY() && p.getY() <= tmp.getY()+80)){
+	    						System.out.println("Unir compiladores en X");	
+	    						if(tmp.getNombre3().compareTo(seleccionada.getNombre1())==0 ){
+	    							System.out.print("Si ");
+	    							ventana.setVisible(true);
+	    							
+	    							butsi.addMouseListener(new MouseListener() {
+	    								
+	    								@Override
+	    								public void mouseReleased(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    									actual.setX(tmp.getX()+80);
+	    									actual.setY(tmp.getY()+40);
+	    									
+	    									vista.repaint();							
+	    									ventana.setVisible(false);
+	    								}
+	    								
+
+	    								@Override
+	    								public void mousePressed(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseExited(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseEntered(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseClicked(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    							});
+	    							
+	    							butno.addMouseListener(new MouseListener() {
+	    								
+	    								@Override
+	    								public void mouseReleased(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    									ventana.setVisible(false);
+	    									vista.repaint();							
+	    									
+	    								}
+	    								
+
+	    								@Override
+	    								public void mousePressed(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseExited(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseEntered(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseClicked(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    							});
+	    							
+	    						}
+	    					}
+	    					
+	    					return tmp;	
+	    					
+	    				}else if(tmp.GetTipofigura()==2){
+	    					System.out.print("Programa");
+	    					if((tmp.getX()+40 <= p.getX() && p.getX() <= tmp.getX()+80) && (tmp.getY() <= p.getY() && p.getY() <= tmp.getY()+40)){
+	    						System.out.println("Unir compilador con Programa");
+	    						
+	    						if(tmp.getNombre2().compareTo(seleccionada.getNombre1())==0){
+	    							System.out.print("Si ");
+	    							ventana.setVisible(true);
+	    							
+	    							butsi.addMouseListener(new MouseListener() {
+	    								
+	    								@Override
+	    								public void mouseReleased(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    									actual.setX(tmp.getX()+40);
+	    									actual.setY(tmp.getY());
+	    									
+	    									vista.repaint();							
+	    									ventana.setVisible(false);
+	    								}
+	    								
+
+	    								@Override
+	    								public void mousePressed(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseExited(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseEntered(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseClicked(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    							});
+	    							
+	    							butno.addMouseListener(new MouseListener() {
+	    								
+	    								@Override
+	    								public void mouseReleased(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    									ventana.setVisible(false);
+	    									vista.repaint();							
+	    									
+	    								}
+	    								
+
+	    								@Override
+	    								public void mousePressed(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseExited(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseEntered(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseClicked(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    							});
+	    						}
+	    						
+	    					}
+	    					
+	    					
+	    					
+	    					
+	    					
+	    				}else if(tmp.GetTipofigura()==3){
+	    					System.out.print("Maquina");
+	    					
+	    				}else if(tmp.GetTipofigura()==4){
+	    					System.out.print("Interprete");
+	    				}
+	    				
+	    			}else if(tipo==2){
+	    				
+	    				if(tmp.GetTipofigura()==1){
+		    				
+	    				}else if(tmp.GetTipofigura()==2){
+	    					
+	    				}else if(tmp.GetTipofigura()==3){
+	    					
+	    				}else if(tmp.GetTipofigura()==4){
+	    					
+	    				}
+	    				
+	    			}else if(tipo==3){
+	    				/* maquina se une a compilador */
+	    				if(tmp.GetTipofigura()==1){
+	    					/********Compilador maquina ********/
+	    					if((tmp.getX()+40 <= p.getX() &&  p.getX() <= tmp.getX()+80) && (tmp.getY()+80 <= p.getY() && p.getY() <= tmp.getY()+120)){
+	    						System.out.println("Unir compilador maquina");
+	    						if(tmp.getNombre3().compareTo(seleccionada.getNombre1())==0 ){
+	    							System.out.print("Si ");
+	    							ventana.setVisible(true);
+	    							
+	    							butsi.addMouseListener(new MouseListener() {
+	    								
+	    								@Override
+	    								public void mouseReleased(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    									actual.setX(tmp.getX()+40);
+	    									actual.setY(tmp.getY()+80);
+	    									
+	    									vista.repaint();							
+	    									ventana.setVisible(false);
+	    								}
+	    								
+
+	    								@Override
+	    								public void mousePressed(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseExited(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseEntered(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseClicked(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    							});
+	    							
+	    							butno.addMouseListener(new MouseListener() {
+	    								
+	    								@Override
+	    								public void mouseReleased(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    									ventana.setVisible(false);
+	    									vista.repaint();							
+	    									
+	    								}
+	    								
+
+	    								@Override
+	    								public void mousePressed(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseExited(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseEntered(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseClicked(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    							});
+	    							
+	    						}
+	    					
+	    						
+	    						
+	    						
+	    						
+	    					}
+	    					
+	    					/***********************************/
+
+	    				}else if(tmp.GetTipofigura()==2){
+	    					
+	    				}else if(tmp.GetTipofigura()==3){
+	    					
+	    				}else if(tmp.GetTipofigura()==4){
+	    					/* colocarle una maquina a un interprete */
+	    					if((tmp.getX() <= p.getX() &&  p.getX() <= tmp.getX()+40) && (tmp.getY()+80 <= p.getY() && p.getY() <= tmp.getY()+120)){
+	    						System.out.println("Unir compilador maquina");
+	    						if(tmp.getNombre2().compareTo(seleccionada.getNombre1())==0 ){
+	    							System.out.print("Si ");
+	    							ventana.setVisible(true);
+	    							
+	    							butsi.addMouseListener(new MouseListener() {
+	    								
+	    								@Override
+	    								public void mouseReleased(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    									actual.setX(tmp.getX());
+	    									actual.setY(tmp.getY()+80);
+	    									
+	    									vista.repaint();							
+	    									ventana.setVisible(false);
+	    								}
+	    								
+
+	    								@Override
+	    								public void mousePressed(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseExited(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseEntered(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseClicked(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    							});
+	    							
+	    							butno.addMouseListener(new MouseListener() {
+	    								
+	    								@Override
+	    								public void mouseReleased(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    									ventana.setVisible(false);
+	    									vista.repaint();							
+	    									
+	    								}
+	    								
+
+	    								@Override
+	    								public void mousePressed(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseExited(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseEntered(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseClicked(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    							});
+	    							
+	    						}
+	    					
+	    						
+	    						
+	    						
+	    						
+	    					}
+	    					
+	    					
+	    					
+	    				}
+	    				
+	    			}else if(tipo==4){
+	    				
+	    				if(tmp.GetTipofigura()==1){
+		    			/********************************/	
+	    					if((tmp.getX()+40 <= p.getX() &&  p.getX() <= tmp.getX()+80) && (tmp.getY()+80 <= p.getY() && p.getY() <= tmp.getY()+120)){
+	    						System.out.println("Unir compilador maquina");
+	    						if(tmp.getNombre3().compareTo(seleccionada.getNombre1())==0 ){
+	    							System.out.print("Si ");
+	    							ventana.setVisible(true);
+	    							
+	    							butsi.addMouseListener(new MouseListener() {
+	    								
+	    								@Override
+	    								public void mouseReleased(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    									actual.setX(tmp.getX()+40);
+	    									actual.setY(tmp.getY()+80);
+	    									
+	    									vista.repaint();							
+	    									ventana.setVisible(false);
+	    								}
+	    								
+
+	    								@Override
+	    								public void mousePressed(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseExited(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseEntered(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseClicked(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    							});
+	    							
+	    							butno.addMouseListener(new MouseListener() {
+	    								
+	    								@Override
+	    								public void mouseReleased(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    									ventana.setVisible(false);
+	    									vista.repaint();							
+	    									
+	    								}
+	    								
+
+	    								@Override
+	    								public void mousePressed(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseExited(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseEntered(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    								
+	    								@Override
+	    								public void mouseClicked(MouseEvent ar) {
+	    									// TODO Auto-generated method stub
+	    									
+	    								}
+	    							});
+	    							
+	    						}
+	    			
+	    						
+	    					}	
+	    					
+	    					
+	    				/******************************/	
+	    				}else if(tmp.GetTipofigura()==2){
+	    					
+	    				}else if(tmp.GetTipofigura()==3){
+	    					
+	    				}else if(tmp.GetTipofigura()==4){
+	    					
+	    				}
+	    				
+	    			}
+	    			
+	    			
+	    			
+	    			
+	    			
+	    			
+	    			/*if(p.getX() < tmp.getX()-10 || p.getY() < tmp.getY()+10){
 	    				//elemento.seleccionada=true;
 	    				//elemento.dentroFigura(p)
 	    				//System.out.println("--"+elemento.getNombre1());nombre de la seleccionada
+
 	    				//acciones internas 
+
 	    				System.out.println("serca");
 	    				return tmp;				
-	    			}
+	    			}*/
 	    			
 	    		}
 		    }
@@ -742,7 +1275,7 @@ public class Controlador {
 			
 			if(left==true){
 				
-			this.compararFigura(ev.getPoint(),tipo);
+			this.compararFigura(ev.getPoint(),tipo, seleccionada);
 			seleccionada.setSeleccionada(false);
 			seleccionada=null;
 			}

@@ -36,6 +36,16 @@ public abstract class Figura {
 	public int getY(){
 		return posicion.y;
 	}
+	
+	public void setX(int x){
+		posicion.x=x;
+	}
+	
+	public void  setY(int y){
+		  posicion.y=y;
+	}
+	
+	
 	/*retorna el tipo de figura para saber que menu llamar*/
 	public int GetTipofigura(){
 		return tipofigura;
