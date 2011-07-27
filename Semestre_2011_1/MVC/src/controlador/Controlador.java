@@ -15,8 +15,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import com.db4o.Db4oEmbedded;
+import com.db4o.ObjectContainer;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 import java.util.ListIterator;
 
 import vista.Vista;
@@ -34,7 +39,7 @@ public class Controlador {
 	private Modelo modelo;
 	private Vista vista;
 	private Figura seleccionada;
-	
+	ObjectContainer db;
 	
 	private int tipo;
 	private boolean center;
@@ -634,6 +639,48 @@ public class Controlador {
 		return null;
 	}
 	
+	public void guardar(){
+		
+		db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "figuras.yap");
+		try {
+			List<Figura> c = db.query(Figura.class);
+			ListIterator<Figura> it1=c.listIterator();
+		    while (it1.hasNext()) {
+		    	db.delete(it1.next());
+		    }
+			ListIterator<Figura> it=modelo.getListado().listIterator();
+		    while (it.hasNext()) {
+		    	db.store(it.next());
+		    }
+		} finally {
+		    db.close();
+		}
+		
+	}
+	
+	public void abrir(){
+		db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "figuras.yap");
+		try {
+			if(modelo.getListado().isEmpty()){
+				List<Figura> c = db.query(Figura.class);
+				
+				if(c.isEmpty()){
+					
+				}else{
+					ListIterator<Figura> it=c.listIterator();
+				    while (it.hasNext()) {
+				    	modelo.AnyadirFigura(it.next());
+				    }
+				}
+				vista.repaint();
+			}
+			
+			
+		} finally {
+		    db.close();
+		}
+		
+	}
 	
 	public void cambiarPosicion(Figura f, Point p){
 		f.setPosicion(p);

@@ -223,6 +223,84 @@ public class Figuras {
 				}
 			});
 			
+			JButton butguar = new JButton("Guardar");
+			butguar.setBounds(30,190, 100, 30);
+			areabotones.add(butguar);
+			
+			butguar.addMouseListener(new MouseListener() {
+				@Override
+				public void mouseReleased(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					/**/
+					//System.out.println("tipo 3");
+					/*Crear un compilador*/
+					controlador.guardar();
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+			
+			JButton butabrir = new JButton("Abrir");
+			butabrir.setBounds(30,230, 100, 30);
+			areabotones.add(butabrir);
+			
+			butabrir.addMouseListener(new MouseListener() {
+				@Override
+				public void mouseReleased(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					/**/
+					//System.out.println("tipo 3");
+					/*Crear un compilador*/
+					controlador.abrir();
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+			
 			guiobjects.add(areadibujo);
 			guiobjects.add(areabotones);
 			/*-----------------------------------------------------*/
